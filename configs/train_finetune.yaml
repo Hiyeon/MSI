@@ -1,0 +1,78 @@
+name: SMWI_2mmto1mm_Ax
+use_tb_logger: false
+model: VideoSR_base_stage2
+distortion: sr
+scale: 2
+gpu_ids: [1]
+dist: false
+time_pth: ~
+use_time: true  # multi=slice interpolation
+frame: 3
+ssl: false   # self-supevise model
+
+beta: 0 #0.005 # for feature domain smooth loss
+
+datasets:
+  train:
+    name: SMWI_h5_stage2
+    mode: SMWI_h5_stage2
+
+    # x2 SSL
+    ssl: false
+    dataroot_GT: ./dataset/train_data_ax.h5
+    dataroot_LQ: ./dataset/train_data_ax.h5
+
+    N_frames: 3
+    use_shuffle: true
+    n_workers: 6
+    batch_size: 1
+
+    use_flip: true
+    use_rot: false
+    color: gray
+    use_time: true
+  
+  val:
+    name: SMWI_h5
+    mode: SMWI_h5
+
+    dataroot_GT: ./dataset/val_data_ax.h5
+    dataroot_LQ: ./dataset/val_data_ax.h5
+    N_frames: 3   # 데이터 수집 프레임 수
+    use_time: true
+
+network_G:
+  which_model_G: OURS_new
+  nf: 64
+  nframes: 3
+  groups: 8
+  front_RBs: 5
+  mid_RBs: 0
+  back_RBs: 10
+  HR_in: false
+
+path: ./experiments/pretrained/SMWI_2mmto1mm_SagCor.pth
+  strict_load: true
+  resume_state: ~
+
+train:
+  lr_G: !!float 1e-5 #4e-4
+  lr_scheme: CosineAnnealingLR_Restart
+  beta1: 0.9
+  beta2: 0.99
+  niter: 100001
+  warmup_iter: -1
+  T_period: [100001]
+  restarts: [100001]
+  restart_weights: [1]
+  eta_min: !!float 1e-5
+
+  pixel_criterion: cb
+  pixel_weight: 1.0
+  val_freq: !!float 1000
+
+  manual_seed: 0
+
+logger:
+  print_freq: 100
+  save_checkpoint_freq: !!float 1e3
