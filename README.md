@@ -8,13 +8,11 @@ Deep learning-based image interpolation methods are confronted with various chal
 - **Controllable Feature Flow Network (CFFNet)**: Estimates complex nonlinear deformations in medical images. CFFNet utilizes a deformation-aware network and a spatial channel modulation module to predict bi-directional feature flows from source slices to target slices, considering an additional position parameter. The learned feature flows are then used to synthesize target intermediate features via deformable convolution.
 - **Two-stage Self-supervised Framework**: In the first stage, synthesized training pairs along the dense sagittal and coronal directions pre-train the CFFNet. In the second stage, sparse axial slices fine-tune the CFFNet with a cycle-consistency constraint and feature domain smooth loss.
 
-Experimental results demonstrate that the proposed CFFNet achieves superior performance in medical slice interpolation tasks with fewer parameters, and the self-supervised CFFNet obtains competitive results compared to other fully supervised algorithms.
-
-This implementation is based on the original code provided by the authors, which can be found at [CodeOcean Capsule](https://codeocean.com/capsule/8945297/tree/v1). The code has been modified and enhanced for better performance and usability.
+This implementation is based on the original code provided by the authors, which can be found at [https://codeocean.com/capsule/8945297/tree/v1]. I have added the training code and revised the data loading process to improve usability and functionality.
 
 ## Key Features
 - **Self-supervised Learning**: Utilizes self-supervised techniques to reduce the need for labeled data.
 - **Controllable Feature Flow**: Allows for precise control over the interpolation process.
 
 ## Reference
-1. Lei, “Self-supervised medical slice interpolation network using controllable feature flow”, Expert Systems with Applications (2024)
+1. Lei, “Self-supervised medical slice interpolation network using controllable feature flow”, Expert Systems with Applications (2024).
