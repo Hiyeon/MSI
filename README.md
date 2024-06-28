@@ -1,6 +1,9 @@
 # Self-supervised Medical Slice Interpolation Network Using Controllable Feature Flow
 
 ## Description
+<p align="center">
+  <img src="https://github.com/Hiyeon/MSI/issues/1#issue-2380003322">
+</p>
 This repository contains the unofficial implementation of the paper ["Self-supervised Medical Slice Interpolation Network Using Controllable Feature Flow"](https://www.sciencedirect.com/science/article/pii/S0957417423024454) by Lei, published in Expert Systems with Applications (2024). The project aims to enhance medical image processing by using a self-supervised learning approach for interpolating medical slices with controllable feature flow.
 
 Deep learning-based image interpolation methods are confronted with various challenges in their application to anisotropic medical volumetric data (i.e., CT and MR images) due to complex nonlinear deformations and the scarcity of high-quality images. This paper proposes a self-supervised multiple medical slice interpolation network using controllable feature flow.
